@@ -233,3 +233,27 @@ opacity:0;
 }
 
 }
+/* Sparkles */
+
+.sparkle{
+    animation: sparkle 2s linear forwards;
+}
+
+@keyframes sparkle{
+
+0%{
+opacity:1;
+transform:scale(.3);
+}
+
+50%{
+opacity:1;
+transform:scale(1.2);
+}
+
+100%{
+opacity:0;
+transform:scale(0);
+}
+
+}
