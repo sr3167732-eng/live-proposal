@@ -264,3 +264,196 @@ function rotateHearts(){
 }
 
 rotateHearts();
+// ==========================================
+// GRAND FINALE
+// ==========================================
+
+setTimeout(() => {
+
+    // Change title
+    document.getElementById("mainTitle").innerHTML =
+    "❤️ I Love You 3000 ❤️";
+
+    typing.innerHTML = "";
+
+    const lines = [
+        "Every heartbeat reminds me of you...",
+        "Every smile of yours brightens my day...",
+        "You are the most beautiful chapter of my life...",
+        "",
+        "Will You Be Mine? 💍"
+    ];
+
+    let index = 0;
+
+    function showLines(){
+
+        if(index < lines.length){
+
+            typing.innerHTML += lines[index] + "<br>";
+
+            index++;
+
+            setTimeout(showLines,1800);
+
+        }else{
+
+            proposalButtons();
+
+            fireworks();
+
+        }
+
+    }
+
+    showLines();
+
+},18000);
+
+// ==========================================
+// Proposal Buttons
+// ==========================================
+
+function proposalButtons(){
+
+    const box=document.createElement("div");
+
+    box.style.marginTop="30px";
+
+    const yes=document.createElement("button");
+
+    yes.innerHTML="💖 YES";
+
+    yes.style.margin="10px";
+    yes.style.padding="15px 35px";
+    yes.style.fontSize="22px";
+    yes.style.borderRadius="50px";
+    yes.style.border="none";
+    yes.style.cursor="pointer";
+
+    const maybe=document.createElement("button");
+
+    maybe.innerHTML="😊 Maybe";
+
+    maybe.style.margin="10px";
+    maybe.style.padding="15px 35px";
+    maybe.style.fontSize="22px";
+    maybe.style.borderRadius="50px";
+    maybe.style.border="none";
+    maybe.style.cursor="pointer";
+
+    box.appendChild(yes);
+    box.appendChild(maybe);
+
+    document.querySelector(".center").appendChild(box);
+
+    yes.onclick=()=>{
+
+        document.body.innerHTML=`
+
+        <div style="display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        flex-direction:column;
+        color:white;
+        text-align:center;
+        font-family:Poppins,sans-serif;">
+
+        <h1 style="font-size:70px;">
+        ❤️ Thank You ❤️
+        </h1>
+
+        <h2>
+        You made my day...
+        </h2>
+
+        <h1>
+        I Love You 3000 ❤️
+        </h1>
+
+        <br>
+
+        <h3>
+        Made (Coded) By
+        <br>
+        Sanju (Sagar) Rai
+        </h3>
+
+        </div>
+
+        `;
+
+    };
+
+    maybe.onclick=()=>{
+
+        maybe.innerHTML="😊 I'll Wait";
+
+    };
+
+}
+
+// ==========================================
+// Fireworks
+// ==========================================
+
+function fireworks(){
+
+    setInterval(()=>{
+
+        for(let i=0;i<25;i++){
+
+            const p=document.createElement("div");
+
+            p.innerHTML="✨";
+
+            p.style.position="fixed";
+
+            p.style.left=(45+Math.random()*10)+"vw";
+
+            p.style.top=(30+Math.random()*20)+"vh";
+
+            p.style.fontSize=(10+Math.random()*25)+"px";
+
+            p.style.pointerEvents="none";
+
+            document.body.appendChild(p);
+
+            const x=(Math.random()-0.5)*400;
+
+            const y=(Math.random()-0.5)*400;
+
+            p.animate([
+
+            {
+                transform:"translate(0,0)",
+                opacity:1
+            },
+
+            {
+                transform:`translate(${x}px,${y}px)`,
+                opacity:0
+            }
+
+            ],{
+
+                duration:1800,
+
+                easing:"ease-out"
+
+            });
+
+            setTimeout(()=>{
+
+                p.remove();
+
+            },1800);
+
+        }
+
+    },2500);
+
+}
+
+               
