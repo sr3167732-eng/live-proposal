@@ -169,3 +169,98 @@ function drawStars() {
 }
 
 drawStars();
+// ==========================================
+// Sparkles
+// ==========================================
+
+function createSparkle() {
+
+    const s = document.createElement("div");
+
+    s.innerHTML = "✨";
+
+    s.style.position = "absolute";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.fontSize = (8 + Math.random() * 18) + "px";
+    s.style.pointerEvents = "none";
+    s.style.opacity = 1;
+
+    document.body.appendChild(s);
+
+    let opacity = 1;
+
+    const fade = setInterval(() => {
+
+        opacity -= 0.03;
+
+        s.style.opacity = opacity;
+
+        if (opacity <= 0) {
+            clearInterval(fade);
+            s.remove();
+        }
+
+    }, 50);
+
+}
+
+setInterval(createSparkle, 150);
+
+// ==========================================
+// Hearts Rotating Around Center
+// ==========================================
+
+const orbit = document.createElement("div");
+
+orbit.style.position = "fixed";
+orbit.style.left = "50%";
+orbit.style.top = "50%";
+orbit.style.width = "1px";
+orbit.style.height = "1px";
+orbit.style.pointerEvents = "none";
+orbit.style.zIndex = "50";
+
+document.body.appendChild(orbit);
+
+const orbitHearts = [];
+
+for(let i=0;i<18;i++){
+
+    const h=document.createElement("div");
+
+    h.innerHTML="❤️";
+
+    h.style.position="absolute";
+
+    h.style.fontSize="28px";
+
+    orbit.appendChild(h);
+
+    orbitHearts.push(h);
+
+}
+
+let angle=0;
+
+function rotateHearts(){
+
+    angle+=0.01;
+
+    orbitHearts.forEach((h,index)=>{
+
+        const a=angle+(index*(Math.PI*2/orbitHearts.length));
+
+        const r=170;
+
+        h.style.left=Math.cos(a)*r+"px";
+
+        h.style.top=Math.sin(a)*r+"px";
+
+    });
+
+    requestAnimationFrame(rotateHearts);
+
+}
+
+rotateHearts();
